@@ -1,31 +1,50 @@
 package com.company;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 /**
- * Created by Hesham on 16/09/2014.
+ * Created by Mostafa on 16/09/2014.
+ * this implementation is the eager implementation of Quick Find
  */
-public class QuickFind {
+public class QuickFind<T> {
     //object id array
-    Object _id[];
+    HashMap<T,T> _id;
     //size of the array
     int _size;
-    //the default size of the array
-    private final static int _defaultSize = 10;
 
-    //init the array with size
-    public QuickFind(int size){
-        _id = new Object[size];
-        _size = size;
-    }
-    //init the array with default size
+    // init the array with default size
     public QuickFind(){
-        _id = new Object[_defaultSize];
-        _size = _defaultSize;
+        _id = new HashMap<T, T>();
+        _size = 0;
     }
-    //helper method to resize the array
-    private void resizeArray(int nSize){
-        Object nArr[] = new Object[nSize];
-        System.arraycopy(_id,0,nArr,0,_size);
-        _size = nSize;
-        _id = nArr;
+    //check connection query
+    //Cost: 1
+    public boolean connected(T p,T q){
+        return _id.get(p) == _id.get(q);
+    }
+    //the union function ti union two objects
+    //Cost: N
+    public void union(T p,T q){
+        T pid = _id.get(p);
+        T qid = _id.get(q);
+        //loop through map
+        Iterator it = _id.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry pair = (Map.Entry)it.next();
+            if(_id.get(pair.getKey()) == pid)
+                _id.replace((T)pair.getKey(),(T)pair.getValue(),qid);
+        }
+    }
+    //function to add objects
+    //Cost: i guess it depends on map but i guess 1
+    public void add(T obj){
+        _id.put(obj,obj);
+        _size++;
+    }
+    //size getter
+    public int get_size(){
+        return _size;
     }
 }
