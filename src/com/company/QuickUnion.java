@@ -32,7 +32,6 @@ public class QuickUnion<T> {
     }
     //private helper method to get root
     //Cost: worst case N
-    //Improvement: Weighted Union Log N
     private T root(T obj){
         while(obj != _id.get(obj))
             obj = _id.get(obj);
@@ -40,6 +39,7 @@ public class QuickUnion<T> {
     }
     //union method
     //Cost: N with the cost of function root
+    //Improvement: Weighted Union Log N
     public void union(T p, T q){
         T i = root(p);
         T j = root(q);
