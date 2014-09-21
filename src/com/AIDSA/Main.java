@@ -2,7 +2,7 @@ package com.AIDSA;
 
 public class Main {
 
-    public static void main(String[] args) {
+    private static void main(String[] args) {
         QuickUnion_Test();
     }
     private static void QuickUnion_Test(){
