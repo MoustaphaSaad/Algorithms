@@ -1,9 +1,27 @@
-package com.AIDSA;
+import com.AIDSA.*;
+import com.AIDSA.Stack;
 
 public class Main {
 
-    private static void main(String[] args) {
-        QuickUnion_Test();
+    public static void main(String[] args) {
+        Stack_Test();
+    }
+    private static void Stack_Test()
+    {
+        com.AIDSA.Stack<String> s = new Stack<String>();
+        s.push("Moustapha");
+        s.push("Saad");
+        s.push("1");
+        s.push("2");
+        s.push("3");
+        s.push("4");
+        s.push("5");
+
+        System.out.printf("Size = %d\n",s.size());
+        System.out.println(s.isEmpty());
+        while(s.size()>0)
+            System.out.printf("%s\n",s.pop());
+
     }
     private static void QuickUnion_Test(){
         QuickUnion<String> qu = new QuickUnion<String>();
