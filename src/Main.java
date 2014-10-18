@@ -1,10 +1,23 @@
 import com.AIDSA.*;
 import com.AIDSA.Stack;
 
+import java.util.Random;
+
 public class Main {
 
     public static void main(String[] args) {
-        Stack_Test();
+        Integer[] data = new Integer[100000000];
+        Random rand = new Random(System.nanoTime());
+        for(int i=0;i<data.length;i++)
+            data[i] = rand.nextInt(100);
+
+        Stopwatch watch = new Stopwatch();
+        Comparable[] sorted = Sorting.mergeSort(data);
+        System.out.printf("FINISHED SORTING IN : %f\n",watch.elapsedTime());
+        /*for(int i=0;i<sorted.length;i++){
+            System.out.print(sorted[i]+" ");
+        }*/
+        //Stack_Test();
     }
     private static void Stack_Test()
     {
