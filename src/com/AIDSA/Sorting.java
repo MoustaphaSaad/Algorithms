@@ -70,4 +70,80 @@ public class Sorting {
         return arr;
     }
 
+    public static Comparable[] heapSort(Comparable[] arr){
+        arr = buildMaxHeap(arr);
+        Comparable tmp;
+        int n = arr.length;
+        for(int i=n-1;i>0;i--){
+            tmp = arr[i];
+            arr[i] = arr[0];
+            arr[0] = tmp;
+            maxHeapify(arr,0,i-1);
+        }
+        return arr;
+    }
+    private static void maxHeapify(Comparable[] arr, int i, int n){
+
+        //getting the left node of this node
+        //while the j is less than the size of the array
+        while(i*2+1<n) {
+            int j = i*2+1;
+            //checking if the right is less than the left node
+            //if not then choose the right to be the parent node instead of i
+            if(j+1<n && arr[j].compareTo(arr[j+1]) < 0)
+                j++;
+            //if the i node is greater than the child node then everythng is ok and break
+            if(arr[i].compareTo(arr[j]) >=0)
+                break;
+            else{
+                //else then we should swap the i and j node
+                //setting the parent node to the biggest child of right and left
+
+                Comparable tmp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = tmp;
+                //setting the j to the left child of children to continue the loop
+                i = j;
+            }
+        }
+        //when break then we have reached the place where the i node is and we assign it
+        return;
+    }
+    private static Comparable[] buildMaxHeap(Comparable[] arr){
+        int n = arr.length;
+        for(int i=n/2;i>=0;i--){
+            maxHeapify(arr,i,n);
+        }
+        return arr;
+    }
+    private static int partition(Comparable[] arr, int p, int r){
+        Comparable x = arr[r];
+        int i = p-1;
+        for(int j = p;j<r;j++){
+            if(arr[j].compareTo(x)<=0){
+                i++;
+                Comparable tmp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = tmp;
+            }
+        }
+        Comparable tmp = arr[i+1];
+        arr[i+1] = arr[r];
+        arr[r] = tmp;
+        return i+1;
+    }
+    private static Comparable[] quickSortAux(Comparable[] arr, int p, int r){
+        if(p<r)
+        {
+            int q = partition(arr,p,r);
+            quickSortAux(arr,p,q-1);
+            quickSortAux(arr,q+1,r);
+        }
+        return arr;
+    }
+    public static Comparable[] quickSort(Comparable[] arr){
+
+        return quickSortAux(arr,0,arr.length-1);
+    }
+
 }

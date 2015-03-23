@@ -6,18 +6,22 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        Integer[] data = new Integer[100000000];
+        /*int n = 1000000;
+        Integer[] data = new Integer[n];
         Random rand = new Random(System.nanoTime());
-        for(int i=0;i<data.length;i++)
+        for(int i=0;i<n;i++)
             data[i] = rand.nextInt(100);
 
         Stopwatch watch = new Stopwatch();
-        Comparable[] sorted = Sorting.mergeSort(data);
-        System.out.printf("FINISHED SORTING IN : %f\n",watch.elapsedTime());
+        Comparable[] sorted = Sorting.quickSort(data);
+        System.out.printf("FINISHED SORTING IN : %f\n",watch.elapsedTime());*/
         /*for(int i=0;i<sorted.length;i++){
             System.out.print(sorted[i]+" ");
         }*/
         //Stack_Test();
+        double[] W = {1,2,3};
+        double[] P = {6,2,3};
+        System.out.println(knapsack.bruteForce(W,P,3));
     }
     private static void Stack_Test()
     {
